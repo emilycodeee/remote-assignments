@@ -213,11 +213,11 @@ body {
   }
 }
 
-@media only screen and (min-width: 800px) and (orientation: landscape) {
+@media only screen and (min-width: 800px),
+  only screen and (min-width: 768px) and (orientation: landscape) {
   .menu li {
     float: left;
   }
-
   .menu li a {
     padding: 20px 30px;
   }
@@ -229,9 +229,6 @@ body {
   .header .menu-icon {
     display: none;
   }
-}
-
-@media only screen and (min-width: 800px) {
   .boxes-items {
     padding: 3% 3%;
     justify-content: center;
