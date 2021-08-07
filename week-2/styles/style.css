@@ -235,6 +235,7 @@ body {
     width: auto;
     position: static;
     height: 4em;
+    overflow: hidden;
   }
   .header .menu-icon {
     display: none;
@@ -242,6 +243,10 @@ body {
   .boxes-items {
     padding: 3% 3%;
     justify-content: center;
+  }
+  /* without active close btn */
+  .menu.active {
+    height: 4em;
   }
 }
 
