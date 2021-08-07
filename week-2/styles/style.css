@@ -1,0 +1,257 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Noto Serif TC", "Gowun Dodum", sans-serif;
+}
+
+.header {
+  background-color: beige;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.3);
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  max-height: 4em;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  color: rgb(29, 6, 6);
+  font-size: 2rem;
+  flex: 1;
+  padding: 10px 10px 10px 30px;
+  text-decoration: none;
+}
+
+/* mobile menu */
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: beige;
+  overflow: hidden;
+  width: 8.5em;
+  position: fixed;
+  right: 0em;
+  top: 50px;
+
+  height: 0;
+  transition: all 0.2s ease-out;
+}
+
+/* 展開清單 */
+.menu.active {
+  height: 100vh;
+}
+
+.item a {
+  text-decoration: none;
+  display: block;
+  padding: 20px 20px;
+  text-align: center;
+  color: rgb(29, 6, 6);
+}
+
+.menu a:hover {
+  background-color: bisque;
+  height: 100%;
+}
+
+/* icon container */
+.menu-icon {
+  padding: 28px 20px;
+  position: relative;
+  margin-right: 1em;
+  float: right;
+  cursor: pointer;
+}
+
+/* icon */
+#nav-icon {
+  background: rgb(29, 6, 6);
+  display: block;
+  height: 2px;
+  width: 18px;
+  position: relative;
+  transition: background 0.2s ease-out;
+}
+
+#nav-icon:before {
+  background: rgb(29, 6, 6);
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 5px;
+  transition: all 0.2s ease-out;
+}
+
+#nav-icon::after {
+  background: rgb(29, 6, 6);
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: -5px;
+  transition: all 0.2s ease-out;
+}
+
+.menu-btn {
+  display: none;
+}
+
+/* icon animation */
+.menu-btn:checked ~ .menu-icon #nav-icon {
+  background: transparent;
+}
+.menu-btn:checked ~ .menu-icon #nav-icon:before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+.menu-btn:checked ~ .menu-icon #nav-icon:after {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.main-slide {
+  margin-top: 3em;
+  min-height: 18em;
+  background-image: url(/images/kaohsiung.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-title {
+  margin: 0 0.8em;
+  color: white;
+  text-shadow: rgb(7, 6, 6) 0.1em 0.1em 0.2em;
+  font-size: 3em;
+}
+
+.main-content,
+.second-content {
+  padding: 2em;
+  margin: 0 auto;
+}
+
+.main-title {
+  text-align: center;
+}
+
+.boxes-items div {
+  margin-bottom: 1.5em;
+}
+
+.action-btn {
+  margin: 0 auto;
+  padding-bottom: 3em;
+  max-width: 8em;
+}
+
+.action-btn:hover {
+  font-size: 1.2em;
+}
+
+.topic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topic a {
+  color: black;
+  text-decoration: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topic a:hover h3 {
+  text-decoration: underline;
+}
+
+.topic img {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s;
+}
+
+.topic img:hover {
+  transform: scale(1.05);
+}
+
+.main-footer {
+  background-color: beige;
+  padding: 0 2em;
+}
+
+.photo-credit {
+  font-size: 0.8em;
+}
+
+.main-footer a,
+.action-btn {
+  text-decoration: none;
+  color: black;
+}
+
+.main-footer a:hover,
+.action-btn:hover {
+  text-decoration: underline;
+}
+
+.second-content {
+  display: none;
+}
+
+@media only screen and (min-width: 500px) {
+  .boxes-items {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 2em;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .menu {
+    display: flex;
+    width: auto;
+    position: static;
+    height: 4em;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+  .boxes-items {
+    padding: 3% 3%;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .header,
+  .main-footer {
+    padding: 0 5em;
+  }
+
+  .boxes-items {
+    max-width: 1200px;
+  }
+}
