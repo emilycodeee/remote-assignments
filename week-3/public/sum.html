@@ -11,39 +11,43 @@
     />
     <link rel="stylesheet" href="style.css" />
     <script>
-      const myURL = location;
       let num = 10;
-      if (myURL.search.split("=")[1]) {
-        num = myURL.search.split("=")[1];
+      function passNum() {
+        num = document.querySelector(".number").value;
       }
+
       const xhr = new XMLHttpRequest();
       xhr.responseType = "document";
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            const data = xhr.responseXML.querySelector("#result").textContent;
-            document.querySelector(
-              "#result"
-            ).innerHTML = `<h4> 1 + ... + ${num} </h4><h4>Result is ...</h4><h4 id="data"> ${data}</>`;
+
+      display(); //default 10
+
+      function display() {
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              const data = xhr.responseXML.querySelector("#result").textContent;
+              document.querySelector(
+                "#result"
+              ).innerHTML = `<h4> 1 + ... + ${num} </h4><h4>Result is ...</h4><h4 id="data"> ${data}</>`;
+            }
           }
-        }
-      };
-      xhr.open("GET", `http://localhost:3000/getData?number=${num}`, true);
-      xhr.send();
+        };
+
+        xhr.open("GET", `http://localhost:3000/getData?number=${num}`, true);
+        xhr.send();
+      }
     </script>
   </head>
   <body>
     <nav class="nav">Week3</nav>
 
     <h1 class="sum-title">Sum up!</h1>
-    <!-- ajax -->
+    <!-- ajax html -->
     <main>
       <div id="result"></div>
-      <form>
-        <i>default is 10 , try a new number:</i><br />
-        <input type="text" name="number" id="sum" />
-        <button type="submit">Send</button>
-      </form>
+      <i>default is 10 , try a new number:</i><br />
+      <input type="text" class="number" onchange="passNum()" value="10" />
+      <button class="btn" onclick="display()">Send</button>
     </main>
     <footer class="footer">Welcome!</footer>
   </body>
