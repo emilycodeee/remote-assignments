@@ -16,12 +16,10 @@
         num = document.querySelector(".number").value;
       }
 
-      const xhr = new XMLHttpRequest();
-      xhr.responseType = "document";
-
       display(); //default 10
-
       function display() {
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = "document";
         xhr.onreadystatechange = function () {
           if (xhr.readyState === 4) {
             if (xhr.status === 200) {
@@ -32,7 +30,6 @@
             }
           }
         };
-
         xhr.open("GET", `http://localhost:3000/getData?number=${num}`, true);
         xhr.send();
       }
