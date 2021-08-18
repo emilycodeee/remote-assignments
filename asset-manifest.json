@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "./static/css/main.304310d2.chunk.css",
+    "main.js": "./static/js/main.2df61618.chunk.js",
+    "main.js.map": "./static/js/main.2df61618.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.281c49eb.js",
+    "runtime-main.js.map": "./static/js/runtime-main.281c49eb.js.map",
+    "static/js/2.0ff3b023.chunk.js": "./static/js/2.0ff3b023.chunk.js",
+    "static/js/2.0ff3b023.chunk.js.map": "./static/js/2.0ff3b023.chunk.js.map",
+    "static/js/3.44124f90.chunk.js": "./static/js/3.44124f90.chunk.js",
+    "static/js/3.44124f90.chunk.js.map": "./static/js/3.44124f90.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.304310d2.chunk.css.map": "./static/css/main.304310d2.chunk.css.map",
+    "static/js/2.0ff3b023.chunk.js.LICENSE.txt": "./static/js/2.0ff3b023.chunk.js.LICENSE.txt",
+    "static/media/food.fb1a9def.jpg": "./static/media/food.fb1a9def.jpg",
+    "static/media/App.css": "./static/media/kaohsiung.8f081fe0.jpg",
+    "static/media/nature.9a886028.jpg": "./static/media/nature.9a886028.jpg",
+    "static/media/temple.c1d71d48.jpg": "./static/media/temple.c1d71d48.jpg",
+    "static/media/travel.35ab574b.jpg": "./static/media/travel.35ab574b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.281c49eb.js",
+    "static/js/2.0ff3b023.chunk.js",
+    "static/css/main.304310d2.chunk.css",
+    "static/js/main.2df61618.chunk.js"
+  ]
+}
