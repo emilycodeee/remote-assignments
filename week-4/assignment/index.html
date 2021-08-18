@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store 101</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      // Assignment 1: Callback Function///
+      function delayedResult(n1, n2, delayTime, callback) {
+        setTimeout(function () {
+          const result = callback;
+          const sum = n1 + n2;
+          result(sum);
+        }, delayTime);
+      }
+
+      // Assignment 1:test data
+      delayedResult(4, 5, 3000, function (result) {
+        console.log(result);
+      });
+
+      // delayedResult(-5, 10, 2000, function (result) {
+      //   window.alert(result);
+      // });
+
+      //Assignment 2: Callback Function and Advanced HTML DOM
+
+      function ajax(src, callback) {
+        const request = new XMLHttpRequest();
+        request.open("GET", src, true);
+        request.send();
+
+        request.addEventListener("load", function () {
+          console.log(request.responseText);
+          const data = JSON.parse(this.responseText);
+          const render = callback;
+          render(data);
+        });
+      }
+
+      function render(data) {
+        const container = document.querySelector(".container");
+        data.forEach((item) => {
+          //container
+          const div = document.createElement("div");
+          div.classList.add("item-container");
+          container.append(div);
+          //title
+          const h1 = document.createElement("h1");
+          h1.classList.add("item-title");
+          h1.textContent = item.name;
+          div.appendChild(h1);
+          //desc-p
+          const p = document.createElement("p");
+          p.classList.add("item-desc");
+          p.textContent = item.description;
+          div.appendChild(p);
+          //price
+          const h4 = document.createElement("h4");
+          h4.classList.add("item-price");
+          h4.textContent = item.price;
+          div.appendChild(h4);
+        });
+      }
+
+      ajax(
+        "http://13.230.176.178:4000/api/1.0/remote-w4-data",
+        function (response) {
+          render(response);
+        }
+      );
+    </script>
+  </head>
+  <body>
+    <nav>
+      <h1>Shop now</h1>
+    </nav>
+    <h1>The 3 Best New Products of Today</h1>
+    <div class="container"></div>
+    <aside>
+      <div class="news">
+        <h5>News</h5>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+          inventore corporis beatae illum. Quas sit, facilis dolor consectetur
+          amet necessitatibus dignissimos fuga dolore earum quos accusamus quam,
+          temporibus, similique modi?Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Facere earum dolorum quod mollitia! Labore at
+          quisquam autem eligendi aut quaerat veritatis deleniti ullam ratione
+          veniam quo beatae, atque assumenda placeat!
+        </p>
+      </div>
+      <div class="about">
+        <h5>About</h5>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+          inventore corporis beatae illum. Quas sit, facilis dolor consectetur
+          amet necessitatibus dignissimos fuga dolore earum quos accusamus quam,
+          temporibus, similique modi?
+        </p>
+      </div>
+    </aside>
+  </body>
+</html>

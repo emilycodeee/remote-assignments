@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: #ececff;
+  background-color: #28004d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav {
+  text-align: center;
+  line-height: 3em;
+}
+
+.container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+
+  padding: 30px 20px;
+  box-shadow: 3px 7px 26px 0 white;
+  border-radius: 5px;
+}
+
+.item-container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-left: 10px;
+  box-shadow: 2px 2px 26px 0 white;
+  border-radius: 5px;
+}
+
+aside {
+  display: grid;
+  margin-top: 30px;
+  max-width: 80%;
+  padding: 10px;
+  grid-template-columns: 60% 40%;
+}
+.about,
+.news {
+  padding: 10px;
+}
+
+h5 {
+  margin-bottom: 10px;
+}
