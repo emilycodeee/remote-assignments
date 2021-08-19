@@ -27,18 +27,33 @@
 
       //Assignment 2: Callback Function and Advanced HTML DOM
 
+      //fetch
       function ajax(src, callback) {
-        const request = new XMLHttpRequest();
-        request.open("GET", src, true);
-        request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-        request.send();
-
-        request.addEventListener("load", function () {
-          console.log(request.responseText);
-          const data = JSON.parse(this.responseText);
-          callback(data);
-        });
+        fetch(src)
+          .then((res) => {
+            if (!res.ok) {
+              throw Error(`Something wrong (${res.status})`);
+            }
+            console.log(res);
+            return res.json();
+          })
+          .then((data) => callback(data))
+          .catch((err) => console.error(`${err.message}💥`));
       }
+
+      // XMLHttpRequest
+      // function ajax(src, callback) {
+      //   const request = new XMLHttpRequest();
+      //   request.open("GET", src, true);
+      //   request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+      //   request.send();
+
+      //   request.addEventListener("load", function () {
+      //     console.log(request.responseText);
+      //     const data = JSON.parse(this.responseText);
+      //     callback(data);
+      //   });
+      // }
 
       function render(data) {
         const container = document.querySelector(".container");
@@ -66,7 +81,7 @@
       }
 
       ajax(
-        " https://appworks-school.github.io/Remote-Aassigiment-Data/products",
+        "https://appworks-school.github.io/Remote-Aassigiment-Data/products",
         function (response) {
           render(response);
         }
