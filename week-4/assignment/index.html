@@ -2,8 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Store 101</title>
     <link rel="stylesheet" href="style.css" />
     <script>
@@ -66,7 +70,7 @@
       }
 
       ajax(
-        " https://appworks-school.github.io/Remote-Aassigiment-Data/products",
+        "http://13.230.176.178:4000/api/1.0/remote-w4-data",
         function (response) {
           render(response);
         }
