@@ -107,6 +107,10 @@
   justify-content: center;
 }
 
+.main-title {
+  margin: 10px 0;
+}
+
 .welcome-title {
   margin: 0 0.8em;
   color: white;
