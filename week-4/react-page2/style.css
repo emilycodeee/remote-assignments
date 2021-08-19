@@ -174,7 +174,7 @@
 
 .main-footer {
   background-color: beige;
-  padding: 0 2em;
+  padding: 1em 2em;
 }
 
 .photo-credit {
@@ -251,6 +251,12 @@
 
   .boxes-items {
     max-width: 1200px;
+  }
+
+  .main-content,
+  .second-content {
+    padding: 0;
+    margin: 0 auto;
   }
 }
 
