@@ -108,7 +108,7 @@
 }
 
 .main-title {
-  margin: 10px 0;
+  margin-top: 1.3em;
 }
 
 .welcome-title {
@@ -118,8 +118,7 @@
   font-size: 3em;
 }
 
-.main-content,
-.second-content {
+.main-content {
   padding: 2em;
   margin: 0 auto;
 }
@@ -150,6 +149,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.topic h3 {
+  margin: 10px;
 }
 
 .topic a {
@@ -194,10 +197,6 @@
 .main-footer a:hover {
   text-decoration: underline;
 }
-
-/* .second-content {
-  display: none;
-} */
 
 @media only screen and (min-width: 500px) {
   .boxes-items {
@@ -257,8 +256,7 @@
     max-width: 1200px;
   }
 
-  .main-content,
-  .second-content {
+  .main-content {
     padding: 0;
     margin: 0 auto;
   }

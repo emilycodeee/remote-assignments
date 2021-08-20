@@ -1,3 +1,85 @@
+const data = [
+  {
+    id: "001",
+    link: "#",
+    title: "雄保庇",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure orro expedita recusandae quidem provident quod laborum voluptas sapiente obcaecati ipsa aliquam veritatis, non optio deleniti distinctio quaerat. Necessitatibus, nam optio?",
+    imgSrc: "./images/temple.jpg",
+    imgAlt: "kaohsiung-temple",
+  },
+  {
+    id: "002",
+    link: "#",
+    title: "雄賀呷",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure orro expedita recusandae quidem provident quod laborum voluptas sapiente obcaecati ipsa aliquam veritatis, non optio deleniti distinctio quaerat. Necessitatibus, nam optio?",
+    imgSrc: "./images/food.jpg",
+    imgAlt: "kaohsiung-food",
+  },
+  {
+    id: "003",
+    link: "#",
+    title: "雄自然",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure orro expedita recusandae quidem provident quod laborum voluptas sapiente obcaecati ipsa aliquam veritatis, non optio deleniti distinctio quaerat. Necessitatibus, nam optio?",
+    imgSrc: "./images/nature.jpg",
+    imgAlt: "kaohsiung-nature",
+  },
+  {
+    id: "004",
+    link: "#",
+    title: "雄好玩",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure orro expedita recusandae quidem provident quod laborum voluptas sapiente obcaecati ipsa aliquam veritatis, non optio deleniti distinctio quaerat. Necessitatibus, nam optio?",
+    imgSrc: "./images/travel.jpg",
+    imgAlt: "kaohsiung-travel",
+  },
+  {
+    id: "005",
+    link: "#",
+    title: "2雄保庇2",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure orro expedita recusandae quidem provident quod laborum voluptas sapiente obcaecati ipsa aliquam veritatis, non optio deleniti distinctio quaerat. Necessitatibus, nam optio?",
+    imgSrc: "./images/temple.jpg",
+    imgAlt: "kaohsiung-temple",
+  },
+  {
+    id: "006",
+    link: "#",
+    title: "2雄賀呷2",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure orro expedita recusandae quidem provident quod laborum voluptas sapiente obcaecati ipsa aliquam veritatis, non optio deleniti distinctio quaerat. Necessitatibus, nam optio?",
+    imgSrc: "./images/food.jpg",
+    imgAlt: "kaohsiung-food",
+  },
+  {
+    id: "007",
+    link: "#",
+    title: "2雄自然2",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure orro expedita recusandae quidem provident quod laborum voluptas sapiente obcaecati ipsa aliquam veritatis, non optio deleniti distinctio quaerat. Necessitatibus, nam optio?",
+    imgSrc: "./images/nature.jpg",
+    imgAlt: "kaohsiung-nature",
+  },
+  {
+    id: "008",
+    link: "#",
+    title: "2雄好玩2",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure orro expedita recusandae quidem provident quod laborum voluptas sapiente obcaecati ipsa aliquam veritatis, non optio deleniti distinctio quaerat. Necessitatibus, nam optio?",
+    imgSrc: "./images/travel.jpg",
+    imgAlt: "kaohsiung-travel",
+  },
+];
+
+const listItem = [
+  { listName: "雄保庇", listLink: "#", id: "ls001" },
+  { listName: "雄賀呷", listLink: "#", id: "ls002" },
+  { listName: "雄自然", listLink: "#", id: "ls003" },
+  { listName: "雄好玩", listLink: "#", id: "ls004" },
+];
+
 const Footer = () => {
   return (
     <footer className="main-footer">
@@ -11,31 +93,29 @@ const Footer = () => {
   );
 };
 
-const Header = (props) => {
-  const menuClasses = props.isBurgerOpen ? "menu menu-active" : "menu";
-  const burgClasses = props.isBurgerOpen ? "burger toggle" : "burger";
+const MenuList = ({ listData }) => {
+  return (
+    <li className="item">
+      <a href={listData.listLink}>{listData.listName}</a>
+    </li>
+  );
+};
+
+const Header = ({ isBurgerOpen, listItem, trigerBurger }) => {
+  const menuClasses = isBurgerOpen ? "menu menu-active" : "menu";
+  const burgClasses = isBurgerOpen ? "burger toggle" : "burger";
   return (
     <header className="header">
       <a href="#" className="logo">
         雄賀誌
       </a>
-
+      {/* menu list */}
       <ul className={menuClasses}>
-        <li className="item">
-          <a href="#">雄保庇</a>
-        </li>
-        <li className="item">
-          <a href="#">雄賀呷</a>
-        </li>
-        <li className="item">
-          <a href="#">雄自然 </a>
-        </li>
-        <li className="item">
-          <a href="#">雄好玩</a>
-        </li>
+        {listItem.map((listData) => (
+          <MenuList listData={listData} key={listData.id} />
+        ))}
       </ul>
-
-      <div className={burgClasses} onClick={props.trigerBurger}>
+      <div className={burgClasses} onClick={trigerBurger}>
         <div className="line1"></div>
         <div className="line2"></div>
         <div className="line3"></div>
@@ -44,132 +124,34 @@ const Header = (props) => {
   );
 };
 
-const MainContent = (props) => {
+const Topic = ({ topicData }) => {
+  return (
+    <div className="topic">
+      <a href={topicData.link}>
+        <img src={topicData.imgSrc} alt={topicData.imgAlt} />
+      </a>
+      <a href={topicData.link}>
+        <h3>{topicData.title}</h3>
+        <p>{topicData.content}</p>
+      </a>
+    </div>
+  );
+};
+
+const MainContent = ({ isReadMore, contents }) => {
   return (
     <div className="main-content-root">
+      <h2 className="main-title">雄賀ㄟ代誌</h2>
+
       <section className="main-content">
-        <h2 className="main-title">雄賀ㄟ代誌</h2>
         <div className="boxes-items">
-          <div className="topic">
-            <a href="#">
-              <img src="./images/temple.jpg" alt="kaohsiung-temple" />
-            </a>
-            <a href="#">
-              <h3>雄保庇</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                porro expedita recusandae quidem provident quod laborum voluptas
-                sapiente obcaecati ipsa aliquam veritatis, non optio deleniti
-                distinctio quaerat. Necessitatibus, nam optio?
-              </p>
-            </a>
-          </div>
-          <div className="topic">
-            <a href="#">
-              <img src="./images/food.jpg" alt="kaohsiung-food" />
-            </a>
-            <a href="#">
-              <h3>雄賀呷</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                porro expedita recusandae quidem provident quod laborum voluptas
-                sapiente obcaecati ipsa aliquam veritatis, non optio deleniti
-                distinctio quaerat. Necessitatibus, nam optio?
-              </p>
-            </a>
-          </div>
-          <div className="topic">
-            <a href="#">
-              <img src="./images/nature.jpg" alt="kaohsiung-nature" />
-            </a>
-            <a href="#">
-              <h3>雄自然</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                porro expedita recusandae quidem provident quod laborum voluptas
-                sapiente obcaecati ipsa aliquam veritatis, non optio deleniti
-                distinctio quaerat. Necessitatibus, nam optio?
-              </p>
-            </a>
-          </div>
-          <div className="topic">
-            <a href="#">
-              <img src="./images/travel.jpg" alt="kaohsiung-travel" />
-            </a>
-            <a href="#">
-              <h3>雄好玩</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                porro expedita recusandae quidem provident quod laborum voluptas
-                sapiente obcaecati ipsa aliquam veritatis, non optio deleniti
-                distinctio quaerat. Necessitatibus, nam optio?
-              </p>
-            </a>
-          </div>
-        </div>
-      </section>
-      {/* second page */}
-      <section
-        className="second-content"
-        style={props.isReadMore ? { display: "block" } : { display: "none" }}
-      >
-        <div className="boxes-items">
-          <div className="topic">
-            <a href="#">
-              <img src="./images/temple.jpg" alt="kaohsiung-temple" />
-            </a>
-            <a href="#">
-              <h3>雄保庇2</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                porro expedita recusandae quidem provident quod laborum voluptas
-                sapiente obcaecati ipsa aliquam veritatis, non optio deleniti
-                distinctio quaerat. Necessitatibus, nam optio?
-              </p>
-            </a>
-          </div>
-          <div className="topic">
-            <a href="#">
-              <img src="./images/food.jpg" alt="kaohsiung-food" />
-            </a>
-            <a href="#">
-              <h3>雄賀呷2</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                porro expedita recusandae quidem provident quod laborum voluptas
-                sapiente obcaecati ipsa aliquam veritatis, non optio deleniti
-                distinctio quaerat. Necessitatibus, nam optio?
-              </p>
-            </a>
-          </div>
-          <div className="topic">
-            <a href="#">
-              <img src="./images/nature.jpg" alt="kaohsiung-nature" />
-            </a>
-            <a href="#">
-              <h3>雄自然2</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                porro expedita recusandae quidem provident quod laborum voluptas
-                sapiente obcaecati ipsa aliquam veritatis, non optio deleniti
-                distinctio quaerat. Necessitatibus, nam optio?
-              </p>
-            </a>
-          </div>
-          <div className="topic">
-            <a href="#">
-              <img src="./images/travel.jpg" alt="kaohsiung-travel" />
-            </a>
-            <a href="#">
-              <h3>雄好玩2</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                porro expedita recusandae quidem provident quod laborum voluptas
-                sapiente obcaecati ipsa aliquam veritatis, non optio deleniti
-                distinctio quaerat. Necessitatibus, nam optio?
-              </p>
-            </a>
-          </div>
+          {isReadMore
+            ? contents.map((topic) => (
+                <Topic topicData={topic} key={topic.id} />
+              ))
+            : contents
+                .slice(0, 4)
+                .map((topic) => <Topic topicData={topic} key={topic.id} />)}
         </div>
       </section>
     </div>
@@ -182,6 +164,8 @@ class App extends React.Component {
     isWelcomeTitle: true,
     isReadMore: false,
     isBurgerOpen: false,
+    contents: data,
+    listItem: listItem,
   };
 
   changeTitle = () => {
@@ -215,6 +199,7 @@ class App extends React.Component {
         <Header
           trigerBurger={this.trigerBurger}
           isBurgerOpen={this.state.isBurgerOpen}
+          listItem={this.state.listItem}
         />
         <div className="main-slide">
           <h1 className="welcome-title" onClick={this.changeTitle}>
@@ -223,7 +208,10 @@ class App extends React.Component {
               : "Have a Good Time!"}
           </h1>
         </div>
-        <MainContent isReadMore={this.state.isReadMore} />
+        <MainContent
+          isReadMore={this.state.isReadMore}
+          contents={this.state.contents}
+        />
         <button className="action-btn" onClick={this.isReadMoreHandle}>
           {this.state.isReadMore ? "Close" : "Read more"}
         </button>
@@ -232,5 +220,5 @@ class App extends React.Component {
     );
   }
 }
-//
+
 ReactDOM.render(<App />, document.querySelector("#root"));
